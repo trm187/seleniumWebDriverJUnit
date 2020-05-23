@@ -29,6 +29,8 @@ public class TestRegistroValidoTest {
   JavascriptExecutor js;
   @Before
   public void setUp() {
+	  System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
+		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
     driver = new ChromeDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
