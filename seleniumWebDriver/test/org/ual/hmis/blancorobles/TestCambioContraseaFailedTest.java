@@ -53,7 +53,7 @@ public class TestCambioContraseaFailedTest {
     driver.findElement(By.id("Input_ConfirmPassword")).sendKeys("Password/");
     driver.findElement(By.cssSelector(".btn-primary")).click();
     driver.findElement(By.cssSelector(".text-danger > ul")).click();
-    assertThat(driver.findElement(By.cssSelector(".text-danger li")).getText(), is("Passwords must have at least one digit (\\\'0\\\'-\\\'9\\\')."));
+    assertThat(driver.findElement(By.cssSelector(".text-danger li")).getText(), is("Passwords must have at least one digit (\'0\'-\'9\')."));
     driver.findElement(By.cssSelector(".btn-link")).click();
     driver.findElement(By.linkText("HMISSesion9")).click();
     driver.findElement(By.cssSelector(".display-4")).click();
@@ -205,7 +205,7 @@ public class TestCambioContraseaFailedTest {
     driver.findElement(By.id("Input_ConfirmPassword")).sendKeys("password12/");
     driver.findElement(By.cssSelector(".btn-primary")).click();
     driver.findElement(By.cssSelector(".text-danger li")).click();
-    assertThat(driver.findElement(By.cssSelector(".text-danger li")).getText(), is("Passwords must have at least one uppercase (\\\'A\\\'-\\\'Z\\\')."));
+    assertThat(driver.findElement(By.cssSelector(".text-danger li")).getText(), is("Passwords must have at least one uppercase (\'A\'-\'Z\')."));
     driver.findElement(By.cssSelector(".btn-link")).click();
     driver.findElement(By.linkText("HMISSesion9")).click();
     driver.findElement(By.cssSelector(".display-4")).click();
