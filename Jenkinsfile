@@ -25,6 +25,7 @@ pipeline {
                 // failed, record the test results
                 success {
                     junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts '**/target/*.jar'
                 }
             }
         }
