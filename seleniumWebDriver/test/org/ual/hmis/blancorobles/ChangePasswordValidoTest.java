@@ -35,6 +35,7 @@ public class ChangePasswordValidoTest {
 
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
+    //saugb
   }
   @After
   public void tearDown() {
