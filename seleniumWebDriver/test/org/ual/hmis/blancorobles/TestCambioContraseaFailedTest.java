@@ -92,16 +92,16 @@ driver = new FirefoxDriver(firefoxOptions);
     driver.findElement(By.id("Input_NewPassword")).sendKeys("Password12/");
     driver.findElement(By.id("Input_ConfirmPassword")).click();
     driver.findElement(By.id("Input_ConfirmPassword")).sendKeys("Password123/");
-    {
-      WebElement element = driver.findElement(By.cssSelector(".btn-primary"));
-      Actions builder = new Actions(driver);
-      builder.moveToElement(element).perform();
-    }
-    {
-      WebElement element = driver.findElement(By.tagName("body"));
-      Actions builder = new Actions(driver);
-      builder.moveToElement(element, 0, 0).perform();
-    }
+//    {
+//      WebElement element = driver.findElement(By.cssSelector(".btn-primary"));
+//      Actions builder = new Actions(driver);
+//      builder.moveToElement(element).perform();
+//    }
+//    {
+//      WebElement element = driver.findElement(By.tagName("body"));
+//      Actions builder = new Actions(driver);
+//      builder.moveToElement(element, 0, 0).perform();
+//    }
     driver.findElement(By.id("change-password-form")).click();
     driver.findElement(By.cssSelector(".form-group:nth-child(4)")).click();
     assertThat(driver.findElement(By.id("Input_ConfirmPassword-error")).getText(), is("The new password and confirmation password do not match."));
@@ -302,16 +302,16 @@ driver = new FirefoxDriver(firefoxOptions);
     driver.findElement(By.id("Input_NewPassword")).click();
     driver.findElement(By.id("Input_NewPassword")).sendKeys("Contrasena12/");
     driver.findElement(By.cssSelector(".btn-primary")).click();
-    {
-      WebElement element = driver.findElement(By.cssSelector(".btn-primary"));
-      Actions builder = new Actions(driver);
-      builder.moveToElement(element).perform();
-    }
-    {
-      WebElement element = driver.findElement(By.tagName("body"));
-      Actions builder = new Actions(driver);
-      builder.moveToElement(element, 0, 0).perform();
-    }
+//    {
+//      WebElement element = driver.findElement(By.cssSelector(".btn-primary"));
+//      Actions builder = new Actions(driver);
+//      builder.moveToElement(element).perform();
+//    }
+//    {
+//      WebElement element = driver.findElement(By.tagName("body"));
+//      Actions builder = new Actions(driver);
+//      builder.moveToElement(element, 0, 0).perform();
+//    }
     driver.findElement(By.cssSelector(".text-danger > ul")).click();
     assertThat(driver.findElement(By.cssSelector(".text-danger li")).getText(), is("The new password and confirmation password do not match."));
     driver.findElement(By.cssSelector(".btn-link")).click();
