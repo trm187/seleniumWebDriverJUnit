@@ -41,7 +41,7 @@ public class TestRegistroFailedTest {
   @After
   public void tearDown() {
     //Con firefox peta
-	driver.quit();
+	//driver.quit();
   }
   @Test
   public void registroEmpty() {
