@@ -15,13 +15,10 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.interactions.Actions;
-
-import com.gargoylesoftware.htmlunit.BrowserVersion;
 public class TestCambioContraseaFailedTest {
   private WebDriver driver;
   private Map<String, Object> vars;
@@ -34,9 +31,9 @@ public class TestCambioContraseaFailedTest {
 	firefoxOptions.setHeadless(true);
 	ChromeOptions ChromeOptions = new ChromeOptions();
 	ChromeOptions.setHeadless(true);
-    //driver = new ChromeDriver(ChromeOptions);
-driver = new FirefoxDriver(firefoxOptions);
-	driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_68,true);
+    driver = new ChromeDriver(ChromeOptions);
+//driver = new FirefoxDriver(firefoxOptions);
+	//driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_68,true);
 
 
     js = (JavascriptExecutor) driver;

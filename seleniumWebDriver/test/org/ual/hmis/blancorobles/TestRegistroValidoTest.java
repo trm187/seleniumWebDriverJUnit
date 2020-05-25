@@ -13,8 +13,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 public class TestRegistroValidoTest {
   private WebDriver driver;
@@ -28,8 +28,8 @@ public class TestRegistroValidoTest {
 		firefoxOptions.setHeadless(true);
 		ChromeOptions ChromeOptions = new ChromeOptions();
 		ChromeOptions.setHeadless(true);
-	   // driver = new ChromeDriver(ChromeOptions);
-	   driver = new FirefoxDriver(firefoxOptions);
+	    driver = new ChromeDriver(ChromeOptions);
+	  // driver = new FirefoxDriver(firefoxOptions);
 		//driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_68,true);
 
 
