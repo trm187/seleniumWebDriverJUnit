@@ -41,7 +41,7 @@ public class TestUsuarioeditFailedTest {
   @After
   public void tearDown() {
     //Con firefox peta
-	  //driver.quit();
+	  driver.quit();
   }
   @Test
   public void usuarioDeleteAccountFailedPassword() {
