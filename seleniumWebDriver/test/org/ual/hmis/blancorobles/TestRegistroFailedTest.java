@@ -14,8 +14,12 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.interactions.Actions;
+
+import com.gargoylesoftware.htmlunit.BrowserVersion;
 public class TestRegistroFailedTest {
   private WebDriver driver;
   private Map<String, Object> vars;
@@ -24,13 +28,22 @@ public class TestRegistroFailedTest {
   public void setUp() {
 	  System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-    driver = new ChromeDriver();
+	FirefoxOptions firefoxOptions = new FirefoxOptions();
+	firefoxOptions.setHeadless(true);
+	ChromeOptions ChromeOptions = new ChromeOptions();
+	ChromeOptions.setHeadless(true);
+   // driver = new ChromeDriver(ChromeOptions);
+    //driver = new FirefoxDriver(firefoxOptions);
+	driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_68,true);
+
+
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
   }
   @After
   public void tearDown() {
-    driver.quit();
+    //Con firefox peta
+	 driver.quit();
   }
   @Test
   public void registroEmpty() {
@@ -77,6 +90,7 @@ public class TestRegistroFailedTest {
     driver.findElement(By.id("registerSubmit")).click();
     driver.findElement(By.cssSelector(".text-danger > ul")).click();
     assertThat(driver.findElement(By.cssSelector(".text-danger li")).getText(), is("The Password field is required."));
+    driver.close();
   }
   @Test
   public void registroPasswordBadLength() {
@@ -123,6 +137,7 @@ public class TestRegistroFailedTest {
     driver.findElement(By.id("registerForm")).click();
     driver.findElement(By.cssSelector(".col-md-4")).click();
     assertThat(driver.findElement(By.cssSelector(".form-group:nth-child(6)")).getText(), is("Confirm password\nThe password and confirmation password do not match."));
+    driver.close();
   }
   @Test
   public void registroPasswordLowerCaseLetters() {

@@ -15,8 +15,12 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.interactions.Actions;
+
+import com.gargoylesoftware.htmlunit.BrowserVersion;
 public class TestCambioContraseaFailedTest {
   private WebDriver driver;
   private Map<String, Object> vars;
@@ -25,13 +29,22 @@ public class TestCambioContraseaFailedTest {
   public void setUp() {
 	System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
 	System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-    driver = new ChromeDriver();
+	FirefoxOptions firefoxOptions = new FirefoxOptions();
+	firefoxOptions.setHeadless(true);
+	ChromeOptions ChromeOptions = new ChromeOptions();
+	ChromeOptions.setHeadless(true);
+    //driver = new ChromeDriver(ChromeOptions);
+//    driver = new FirefoxDriver(firefoxOptions);
+	driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_68,true);
+
+
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
   }
   @After
   public void tearDown() {
-    driver.quit();
+  //Con el driver de Firefox hay que comentar el driver.quit() o peta
+	 driver.quit();
   }
   @Test
   public void changePasswordNumbers() {
@@ -107,6 +120,11 @@ public class TestCambioContraseaFailedTest {
     driver.findElement(By.id("Input_Password")).click();
     driver.findElement(By.id("Input_Password")).sendKeys("Password12/");
     driver.findElement(By.id("Input_Password")).sendKeys(Keys.ENTER);
+    try {
+    	Thread.sleep(1000);
+    }catch(InterruptedException e) {
+    	e.printStackTrace();
+    }
     driver.findElement(By.linkText("Hello user2@example.com!")).click();
     driver.findElement(By.id("change-password")).click();
     driver.findElement(By.id("Input_OldPassword")).click();
@@ -222,6 +240,11 @@ public class TestCambioContraseaFailedTest {
     driver.findElement(By.id("Input_Password")).click();
     driver.findElement(By.id("Input_Password")).sendKeys("Password12/");
     driver.findElement(By.id("Input_Password")).sendKeys(Keys.ENTER);
+    try {
+    	Thread.sleep(1000);
+    }catch(InterruptedException e) {
+    	e.printStackTrace();
+    }
     driver.findElement(By.linkText("Hello user2@example.com!")).click();
     driver.findElement(By.id("change-password")).click();
     driver.findElement(By.cssSelector(".btn-primary")).click();
