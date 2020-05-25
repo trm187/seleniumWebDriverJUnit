@@ -34,7 +34,9 @@ pipeline {
                     sh"xvfb-run mvn test -Dwebdriver.chrome.driver=${DRIVERS_LOC}/chromedriver"
                 }
                 post{
-                    junit '**/target/surefire-reports/TEST-*.xml'
+                    success{
+                        junit '**/target/surefire-reports/TEST-*.xml'
+                    }
                 }
             }
     }
