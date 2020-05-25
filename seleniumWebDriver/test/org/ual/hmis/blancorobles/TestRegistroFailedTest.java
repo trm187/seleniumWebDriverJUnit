@@ -15,11 +15,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.interactions.Actions;
-
-import com.gargoylesoftware.htmlunit.BrowserVersion;
 public class TestRegistroFailedTest {
   private WebDriver driver;
   private Map<String, Object> vars;
@@ -33,8 +31,8 @@ public class TestRegistroFailedTest {
 	ChromeOptions ChromeOptions = new ChromeOptions();
 	ChromeOptions.setHeadless(true);
    // driver = new ChromeDriver(ChromeOptions);
-    //driver = new FirefoxDriver(firefoxOptions);
-	driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_68,true);
+    driver = new FirefoxDriver(firefoxOptions);
+	//driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_68,true);
 
 
     js = (JavascriptExecutor) driver;
@@ -43,7 +41,7 @@ public class TestRegistroFailedTest {
   @After
   public void tearDown() {
     //Con firefox peta
-	 driver.quit();
+	// driver.quit();
   }
   @Test
   public void registroEmpty() {

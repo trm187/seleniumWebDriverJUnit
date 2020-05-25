@@ -14,10 +14,8 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-
-import com.gargoylesoftware.htmlunit.BrowserVersion;
 public class TestLoginFailedTest {
   private WebDriver driver;
   private Map<String, Object> vars;
@@ -31,8 +29,8 @@ public class TestLoginFailedTest {
 		ChromeOptions ChromeOptions = new ChromeOptions();
 		ChromeOptions.setHeadless(true);
 	    //driver = new ChromeDriver(ChromeOptions);
-	    //driver = new FirefoxDriver(firefoxOptions);
-		driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_68,true);
+	    driver = new FirefoxDriver(firefoxOptions);
+		//driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_68,true);
 
 
     js = (JavascriptExecutor) driver;
@@ -41,7 +39,7 @@ public class TestLoginFailedTest {
   @After
   public void tearDown() {
    //Con firefox hay que comentarlo o peta
-	 driver.quit();
+	 //driver.quit();
   }
   @Test
   public void loginBad() {
