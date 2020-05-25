@@ -27,7 +27,9 @@ pipeline {
                     junit '**/target/surefire-reports/TEST-*.xml'
                 }
             }
-            stage('Chrome tests'){
+            
+        }
+        stage('Chrome tests'){
                 steps{
                     sh"xvfb-run mvn test -Dwebdriver.chrome.driver=${DRIVERS_LOC}/chromedriver"
                 }
@@ -35,6 +37,5 @@ pipeline {
                     junit '**/target/surefire-reports/TEST-*.xml'
                 }
             }
-        }
     }
 }
