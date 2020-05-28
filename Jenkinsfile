@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Chrome tests'){
                 steps{
-                    sh"xvfb-run mvn test -Dwebdriver.chrome.driver=${DRIVERS_LOC}/chromedriver"
+                    sh"xvfb-run mvn -f seleniumWebDriver/pom.xml clean test -Dwebdriver.chrome.driver=${DRIVERS_LOC}/chromedriver"
                 }
                 post{
                     success{
