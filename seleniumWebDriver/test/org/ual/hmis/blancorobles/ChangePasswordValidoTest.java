@@ -39,7 +39,7 @@ public class ChangePasswordValidoTest {
   }
   @After
   public void tearDown() {
-    //driver.quit();
+    driver.quit();
   }
   @Test
   public void changePasswordValido() {

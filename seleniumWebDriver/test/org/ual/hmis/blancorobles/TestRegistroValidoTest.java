@@ -39,7 +39,7 @@ public class TestRegistroValidoTest {
   @After
   public void tearDown() {
     //Con firefox peta
-	 //driver.quit();
+	 driver.quit();
   }
   @Test
   public void registroValidologinlogout() {
