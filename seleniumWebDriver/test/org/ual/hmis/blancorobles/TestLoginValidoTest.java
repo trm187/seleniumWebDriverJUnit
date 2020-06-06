@@ -1,4 +1,5 @@
 package org.ual.hmis.blancorobles;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -15,35 +16,27 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxOptions;
 public class TestLoginValidoTest {
   private WebDriver driver;
   private Map<String, Object> vars;
   JavascriptExecutor js;
   @Before
   public void setUp() {
-//	  System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
-//		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-		FirefoxOptions firefoxOptions = new FirefoxOptions();
-		firefoxOptions.setHeadless(true);
+		//System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+
 		ChromeOptions ChromeOptions = new ChromeOptions();
 		ChromeOptions.setHeadless(true);
 	    driver = new ChromeDriver(ChromeOptions);
-	    //driver = new FirefoxDriver(firefoxOptions);
-		//driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_68,true);
-
-
-    js = (JavascriptExecutor) driver;
+	    js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
   }
   @After
   public void tearDown() {
-    //Con firefox hay que comentarlo o peta
-	  driver.quit();
+    driver.quit();
   }
   @Test
   public void loginValido() {
-    driver.get("https://hmissesion920200514114002.azurewebsites.net/");
+    driver.get("https://practicaselenium.azurewebsites.net/");
     driver.manage().window().setSize(new Dimension(1900, 1020));
     driver.findElement(By.linkText("Login")).click();
     driver.findElement(By.id("Input_Email")).click();

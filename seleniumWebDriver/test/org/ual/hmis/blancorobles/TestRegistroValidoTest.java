@@ -1,4 +1,5 @@
 package org.ual.hmis.blancorobles;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -15,35 +16,27 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxOptions;
 public class TestRegistroValidoTest {
   private WebDriver driver;
   private Map<String, Object> vars;
   JavascriptExecutor js;
   @Before
   public void setUp() {
-//	  System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
-//		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-		FirefoxOptions firefoxOptions = new FirefoxOptions();
-		firefoxOptions.setHeadless(true);
+		//System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+
 		ChromeOptions ChromeOptions = new ChromeOptions();
 		ChromeOptions.setHeadless(true);
 	    driver = new ChromeDriver(ChromeOptions);
-	  // driver = new FirefoxDriver(firefoxOptions);
-		//driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_68,true);
-
-
-    js = (JavascriptExecutor) driver;
+	    js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
   }
   @After
   public void tearDown() {
-    //Con firefox peta
-	 driver.quit();
+    driver.quit();
   }
   @Test
   public void registroValidologinlogout() {
-    driver.get("https://hmissesion920200514114002.azurewebsites.net/");
+    driver.get("https://practicaselenium.azurewebsites.net/");
     vars.put("emailrandom", js.executeScript("return \"ual-\" + Math.floor(Math.random()*1500000)+\"@ual.es\""));
     vars.put("pass", js.executeScript("return \"Password1234$\""));
     System.out.println(vars.get("emailrandom").toString());
@@ -63,7 +56,7 @@ public class TestRegistroValidoTest {
     driver.findElement(By.id("Input_Email")).sendKeys(vars.get("emailrandom").toString());
     driver.findElement(By.id("Input_Password")).sendKeys(vars.get("pass").toString());
     driver.findElement(By.id("login-submit")).click();
-    driver.findElement(By.linkText("Hello "+vars.get("emailrandom").toString()+"!")).click();
+    driver.findElement(By.linkText("Hello" + vars.get("emailrandom").toString()+"!")).click();
     driver.findElement(By.id("personal-data")).click();
     driver.findElement(By.cssSelector("#download-data > .btn")).click();
     driver.close();

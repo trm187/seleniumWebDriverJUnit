@@ -1,4 +1,5 @@
 package org.ual.hmis.blancorobles;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -16,7 +17,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
 public class TestRegistroFailedTest {
   private WebDriver driver;
@@ -24,28 +24,21 @@ public class TestRegistroFailedTest {
   JavascriptExecutor js;
   @Before
   public void setUp() {
-//	  System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
-//		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-	FirefoxOptions firefoxOptions = new FirefoxOptions();
-	firefoxOptions.setHeadless(true);
-	ChromeOptions ChromeOptions = new ChromeOptions();
-	ChromeOptions.setHeadless(true);
-   driver = new ChromeDriver(ChromeOptions);
-    //driver = new FirefoxDriver(firefoxOptions);
-	//driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_68,true);
+		//System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 
-
-    js = (JavascriptExecutor) driver;
+		ChromeOptions ChromeOptions = new ChromeOptions();
+		ChromeOptions.setHeadless(true);
+	    driver = new ChromeDriver(ChromeOptions);
+	    js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
   }
   @After
   public void tearDown() {
-    //Con firefox peta
-	driver.quit();
+    driver.quit();
   }
   @Test
   public void registroEmpty() {
-    driver.get("https://hmissesion920200514114002.azurewebsites.net/");
+    driver.get("https://practicaselenium.azurewebsites.net/");
     driver.manage().window().setSize(new Dimension(1294, 1400));
     driver.findElement(By.linkText("Register")).click();
     driver.findElement(By.id("registerSubmit")).click();
@@ -57,7 +50,7 @@ public class TestRegistroFailedTest {
   }
   @Test
   public void registroEmptyEmail() {
-    driver.get("https://hmissesion920200514114002.azurewebsites.net/");
+    driver.get("https://practicaselenium.azurewebsites.net/");
     driver.manage().window().setSize(new Dimension(1294, 1400));
     driver.findElement(By.linkText("Register")).click();
     driver.findElement(By.id("Input_Password")).click();
@@ -80,7 +73,7 @@ public class TestRegistroFailedTest {
   }
   @Test
   public void registroEmptyPass() {
-    driver.get("https://hmissesion920200514114002.azurewebsites.net/");
+    driver.get("https://practicaselenium.azurewebsites.net/");
     driver.manage().window().setSize(new Dimension(1294, 1400));
     driver.findElement(By.linkText("Register")).click();
     driver.findElement(By.id("Input_Email")).click();
@@ -88,11 +81,10 @@ public class TestRegistroFailedTest {
     driver.findElement(By.id("registerSubmit")).click();
     driver.findElement(By.cssSelector(".text-danger > ul")).click();
     assertThat(driver.findElement(By.cssSelector(".text-danger li")).getText(), is("The Password field is required."));
-    driver.close();
   }
   @Test
   public void registroPasswordBadLength() {
-    driver.get("https://hmissesion920200514114002.azurewebsites.net/");
+    driver.get("https://practicaselenium.azurewebsites.net/");
     driver.manage().window().setSize(new Dimension(1294, 1400));
     driver.findElement(By.linkText("Register")).click();
     driver.findElement(By.id("Input_Email")).click();
@@ -104,7 +96,7 @@ public class TestRegistroFailedTest {
   }
   @Test
   public void registroPasswordDistinta() {
-    driver.get("https://hmissesion920200514114002.azurewebsites.net/");
+    driver.get("https://practicaselenium.azurewebsites.net/");
     driver.manage().window().setSize(new Dimension(1294, 1400));
     driver.findElement(By.linkText("Register")).click();
     driver.findElement(By.id("Input_Email")).click();
@@ -134,12 +126,11 @@ public class TestRegistroFailedTest {
     }
     driver.findElement(By.id("registerForm")).click();
     driver.findElement(By.cssSelector(".col-md-4")).click();
-    assertThat(driver.findElement(By.cssSelector(".form-group:nth-child(6)")).getText(), is("Confirm password\nThe password and confirmation password do not match."));
-    driver.close();
+    assertThat(driver.findElement(By.cssSelector(".form-group:nth-child(6)")).getText(), is("Confirm password\\\\nThe password and confirmation password do not match."));
   }
   @Test
   public void registroPasswordLowerCaseLetters() {
-    driver.get("https://hmissesion920200514114002.azurewebsites.net/");
+    driver.get("https://practicaselenium.azurewebsites.net/");
     driver.manage().window().setSize(new Dimension(1294, 1400));
     driver.findElement(By.linkText("Register")).click();
     driver.findElement(By.id("Input_Email")).click();
@@ -148,13 +139,13 @@ public class TestRegistroFailedTest {
     driver.findElement(By.id("Input_ConfirmPassword")).sendKeys("12345$$");
     driver.findElement(By.id("registerSubmit")).click();
     driver.findElement(By.cssSelector(".text-danger > ul")).click();
-    assertThat(driver.findElement(By.cssSelector(".text-danger li:nth-child(1)")).getText(), is("Passwords must have at least one lowercase (\'a\'-\'z\')."));
-    assertThat(driver.findElement(By.cssSelector(".text-danger li:nth-child(2)")).getText(), is("Passwords must have at least one uppercase (\'A\'-\'Z\')."));
+    assertThat(driver.findElement(By.cssSelector(".text-danger li:nth-child(1)")).getText(), is("Passwords must have at least one lowercase (\\\'a\\\'-\\\'z\\\')."));
+    assertThat(driver.findElement(By.cssSelector(".text-danger li:nth-child(2)")).getText(), is("Passwords must have at least one uppercase (\\\'A\\\'-\\\'Z\\\')."));
     driver.close();
   }
   @Test
   public void registroPasswordNotAlphanumerical() {
-    driver.get("https://hmissesion920200514114002.azurewebsites.net/");
+    driver.get("https://practicaselenium.azurewebsites.net/");
     driver.manage().window().setSize(new Dimension(1294, 1400));
     driver.findElement(By.linkText("Register")).click();
     driver.findElement(By.id("Input_Email")).click();
@@ -168,7 +159,7 @@ public class TestRegistroFailedTest {
   }
   @Test
   public void registroPasswordNumbers() {
-    driver.get("https://hmissesion920200514114002.azurewebsites.net/");
+    driver.get("https://practicaselenium.azurewebsites.net/");
     driver.manage().window().setSize(new Dimension(1294, 1400));
     driver.findElement(By.linkText("Register")).click();
     driver.findElement(By.id("Input_Email")).click();
@@ -176,12 +167,12 @@ public class TestRegistroFailedTest {
     driver.findElement(By.id("Input_Password")).sendKeys("Pass$$");
     driver.findElement(By.id("Input_ConfirmPassword")).sendKeys("Pass$$");
     driver.findElement(By.id("registerSubmit")).click();
-    assertThat(driver.findElement(By.cssSelector(".text-danger li")).getText(), is("Passwords must have at least one digit (\'0\'-\'9\')."));
+    assertThat(driver.findElement(By.cssSelector(".text-danger li")).getText(), is("Passwords must have at least one digit (\\\'0\\\'-\\\'9\\\')."));
     driver.close();
   }
   @Test
   public void registroPasswordUpperCase() {
-    driver.get("https://hmissesion920200514114002.azurewebsites.net/");
+    driver.get("https://practicaselenium.azurewebsites.net/");
     driver.manage().window().setSize(new Dimension(1294, 1400));
     driver.findElement(By.linkText("Register")).click();
     driver.findElement(By.id("Input_Email")).click();
@@ -190,12 +181,12 @@ public class TestRegistroFailedTest {
     driver.findElement(By.id("Input_ConfirmPassword")).sendKeys("pass1234$");
     driver.findElement(By.id("registerSubmit")).click();
     driver.findElement(By.cssSelector(".text-danger li")).click();
-    assertThat(driver.findElement(By.cssSelector(".text-danger li")).getText(), is("Passwords must have at least one uppercase (\'A\'-\'Z\')."));
+    assertThat(driver.findElement(By.cssSelector(".text-danger li")).getText(), is("Passwords must have at least one uppercase (\\\'A\\\'-\\\'Z\\\')."));
     driver.close();
   }
   @Test
   public void registroRepeatedEmail() {
-    driver.get("https://hmissesion920200514114002.azurewebsites.net/");
+    driver.get("https://practicaselenium.azurewebsites.net/");
     driver.manage().window().setSize(new Dimension(1294, 1400));
     driver.findElement(By.linkText("Register")).click();
     driver.findElement(By.id("Input_Email")).click();
@@ -204,7 +195,7 @@ public class TestRegistroFailedTest {
     driver.findElement(By.id("Input_ConfirmPassword")).sendKeys("Pass1234$");
     driver.findElement(By.id("registerSubmit")).click();
     driver.findElement(By.cssSelector(".text-danger > ul")).click();
-    assertThat(driver.findElement(By.cssSelector(".text-danger li")).getText(), is("User name \'correo@correo.com\' is already taken."));
+    assertThat(driver.findElement(By.cssSelector(".text-danger li")).getText(), is("User name \\\'correo@correo.com\\\' is already taken."));
     driver.close();
   }
 }
